@@ -54,7 +54,7 @@ word4 = 'standard'
 word4 = word4.encode()
 print(word4, '\n', word4.decode())
 
-
+# task 5
 ping_results = ''
 args = ['ping', 'yandex.ru']
 subproc_ping = subprocess.Popen(args, stdout=subprocess.PIPE)
@@ -63,3 +63,20 @@ for line in subproc_ping.stdout:
 
 print(ping_results.encode('utf-8'))
 
+# task 6
+import urllib.request, chardet
+
+file = open("test_file.txt", 'r')
+new_string = ' '
+for l in file:
+    new_string += l
+chardet.detect(l)
+file.close()
+print(new_string)
+
+
+fileb = open("test_file.txt", 'rb')
+contentb = fileb.read()
+fileb.close
+print(contentb)
+print(contentb.decode('utf-8'))

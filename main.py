@@ -32,5 +32,14 @@ def get_data():
     return main_data
 
 
-get_data()
+def write_to_csv(file_name: str):
+    main_date = get_data()
+    myfile = open(file_name, 'w', newline='')
 
+    with myfile:
+        writer = csv.writer(myfile, delimiter=';')
+        for row in main_date:
+            writer.writerow(row)
+
+if __name__ == '__main__':
+    write_to_csv('file.csv')

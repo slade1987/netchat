@@ -14,8 +14,8 @@ def save_yaml():
         }
     }
 
-    with open(file_path, 'w') as f_n:
-        yaml.dump(data, f_n, default_flow_style=False, allow_unicode=True)
+    with open(file_path, 'w') as file:
+        yaml.dump(data, file, default_flow_style=False, allow_unicode=True)
 
-    with open(file_path) as f_n:
-        print(f_n.read())
+    with open(file_path) as file:
+        print(file.read())

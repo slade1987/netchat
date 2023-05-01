@@ -12,14 +12,17 @@ class TestChat(unittest.TestCase):
         self.serv.close()
         self.client.close()
 
+    def test_pasrse(self):
+        self.client.parse_data(self.sender)
+
     def test_serv_sock_is_inst(self):
         self.assertIsInstance(self.serv,socket.socket)
 
     def testServer(self):
         self.assertEqual(self.serv.getsockname(), ('127.0.0.1', 7777))
 
-    # def testClient(self):
-    #     self.assertEqual(self.client.getsockname(),('127.0.0.1',7777))
+    def testClient(self):
+        self.assertEqual(self.client.getsockname(),('127.0.0.1',7777))
 
 
 

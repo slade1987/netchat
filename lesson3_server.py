@@ -14,6 +14,10 @@ RESPONSE = {
 "time": str(datetime.now())
 }
 
+SERV_RESP = (
+    ('200', 'OK'),
+    ('400', 'неправильный запрос/JSON-объект')
+)
 
 
 def chat_server(ip:str, port:int):
@@ -21,6 +25,8 @@ def chat_server(ip:str, port:int):
     sock.bind((ip,int(port)))
     sock.listen()
     print('Server is running')
+    RESPONSE['response'] = SERV_RESP[0]
+    print('Отладочная информация', RESPONSE)
 
     while True:
         conn, addr = sock.accept()

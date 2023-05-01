@@ -8,8 +8,7 @@ parser.add_argument('ip_addr',  nargs='?', default='localhost')
 parser.add_argument("port", nargs='?', default='7777')
 args = parser.parse_args()
 
-RESPONSE = {
-"response": 'None',
+PRESENCE = {
 "From": 'client',
 "time": str(datetime.now())
 }
@@ -21,7 +20,11 @@ def chat_client(ip:str, port: int):
     sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     sock.connect((ip, int(port)))
     data = json.loads(sock.recv(1024))
-    sock.send(json.dumps(RESPONSE).encode('utf-8'))
+    sock.send(json.dumps(PRESENCE).encode('utf-8'))
+    if data['response'][0] == '200':
+        print("Все прошло хорошо")
+    else:
+        print('Что то пошло не так')
     sock.close()
     print(data)
 

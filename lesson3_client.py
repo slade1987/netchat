@@ -25,6 +25,7 @@ def chat_client(ip:str, port: int):
     sock.connect((ip, int(port)))
     data = json.loads(sock.recv(1024))
     sock.send(json.dumps(PRESENCE).encode('utf-8'))
+    # sock.send("dfdfdfssdf".encode('utf-8'))
     parse_data(data)
     sock.close()
     print(data)

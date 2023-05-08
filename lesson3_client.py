@@ -48,3 +48,4 @@ def chat_client(ip:str, port: int):
 
 if __name__ == "__main__":
     chat_client(args.ip_addr, args.port)
+    print("hello")

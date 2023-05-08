@@ -1,8 +1,10 @@
+import inspect
 import socket
 import argparse
 from datetime import datetime
 import json
 import log.server_log_config as logg
+from functools import wraps
 
 parser = argparse.ArgumentParser()
 parser.add_argument('ip_addr',  nargs='?', default='localhost')
@@ -20,7 +22,14 @@ SERV_RESP = (
     ('400', 'неправильный запрос/JSON-объект')
 )
 
+def log(func):
+    @wraps(func)
+    def call(*args, **kwargs):
+        logg.logger.debug(f"Funct {func.__name__} call {inspect.stack()[1][3]}")
+        return func(*args, **kwargs)
+    return call
 
+@log
 def chat_server(ip:str, port:int):
     sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 

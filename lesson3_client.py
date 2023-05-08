@@ -1,3 +1,4 @@
+import inspect
 import socket
 import argparse
 import json
@@ -18,7 +19,7 @@ PRESENCE = {
 def log(func):
     @wraps(func)
     def call(*args, **kwargs):
-        print(func.__name__)
+        logg.logger.debug(f"Funct {func.__name__} call {inspect.stack()[1][3]}")
         return func(*args, **kwargs)
     return call
 

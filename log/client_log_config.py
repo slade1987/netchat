@@ -1,4 +1,6 @@
 import  logging
 
-logging.basicConfig(level=logging.INFO, filename="clien.log",filemode="a",
+logger = logging.getLogger()
+
+logging.basicConfig(level='DEBUG', filename="client.log",filemode="a",
                     format='%(asctime)s %(levelname)s %(module)s %(message)s')
